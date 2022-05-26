@@ -4,9 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ajedrez.Views"
+        xmlns:vm="clr-namespace:Ajedrez.ViewModels"
         mc:Ignorable="d"
         Title="TablaView" Height="850" Width="800" ResizeMode="NoResize">
     <Grid>
+        <Grid.DataContext>
+            <vm:AjedrezViewModel></vm:AjedrezViewModel>
+        </Grid.DataContext>
         <DockPanel>
             <DockPanel.Resources>
                 <Style TargetType="{x:Type Button}">
@@ -30,13 +34,14 @@
                     Height="70">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="10,0">Ingresa los datos aquí:</TextBlock>
-                    <TextBox Width="300"></TextBox>
+                    <TextBox Width="300"
+                             Text="{Binding Palabra}"></TextBox>
                     <Button Margin="10,0"
                             Background="Black"
                             Foreground="White">Ingresar datos</Button>
 
                 </StackPanel>
-                <TextBlock></TextBlock>
+                <TextBlock Text="{Binding PiezaConvertida}"></TextBlock>
             </StackPanel>
             <StackPanel DockPanel.Dock="Left"
                         Width="30">
