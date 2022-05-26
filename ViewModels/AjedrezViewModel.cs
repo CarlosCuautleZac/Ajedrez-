@@ -1,9 +1,11 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Ajedrez.ViewModels
 {
@@ -12,6 +14,8 @@ namespace Ajedrez.ViewModels
         /* Console.WriteLine("Tu Peon esta en B1");
             Console.WriteLine("Escribe la serie de movimientos del peon separados por espcios");
          */
+
+        public ICommand ValidarCommand { get; set; }
 
         //Es para saber si se cumple el regex
         private bool movimientosvalidos;
@@ -50,7 +54,10 @@ namespace Ajedrez.ViewModels
         }
 
 
-
+        public AjedrezViewModel()
+        {
+            ValidarCommand = new RelayCommand(GetPiezaConvertida);
+        }
 
         //Este metodo verifica el largo adecuado 
         public bool LargoAdecuado()
