@@ -43,6 +43,7 @@
                                FontSize="16"
                                VerticalAlignment="Center"
                                FontWeight="Bold"
+                               
                                Text="{Binding PiezaActual}"></TextBlock>
                     <TextBox Width="260"
                              Text="{Binding Palabra}"></TextBox>
