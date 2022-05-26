@@ -58,10 +58,10 @@
                 <StackPanel.Resources>
                     <Style TargetType="TextBlock">
                         <Setter Property="FontWeight" Value="Bold"></Setter>
-                        <Setter Property="Margin" Value="10,100,0,0"></Setter>
+                        <Setter Property="Margin" Value="10,80,0,0"></Setter>
                     </Style>
                 </StackPanel.Resources>
-                <TextBlock Margin="10,90,0,0">6</TextBlock>
+                <TextBlock Margin="10,80,0,0">6</TextBlock>
                 <TextBlock>5</TextBlock>
                 <TextBlock>4</TextBlock>
                 <TextBlock>3</TextBlock>
@@ -75,10 +75,10 @@
                 <StackPanel.Resources>
                     <Style TargetType="TextBlock">
                         <Setter Property="FontWeight" Value="Bold"></Setter>
-                        <Setter Property="Margin" Value="115,10,0,0"></Setter>
+                        <Setter Property="Margin" Value="100,10,0,0"></Setter>
                     </Style>
                 </StackPanel.Resources>
-                <TextBlock Margin="60,10,0,0">A</TextBlock>
+                <TextBlock Margin="50,10,0,0">A</TextBlock>
                 <TextBlock>B</TextBlock>
                 <TextBlock>C</TextBlock>
                 <TextBlock>D</TextBlock>
