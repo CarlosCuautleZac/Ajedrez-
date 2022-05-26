@@ -15,9 +15,13 @@ namespace Ajedrez.Helpers
         {
             string position = value.ToString();
 
+            if (string.IsNullOrWhiteSpace(position))
+                return 5;
+
             if (position == "B2")
                 return 15;
-            else return 20;
+            else                
+                return 20;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
