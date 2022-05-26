@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -52,6 +53,14 @@ namespace Ajedrez.ViewModels
         {
             get { return piezaconvertida; }
             set { piezaconvertida = value; Actualizar("PiezaConvertida"); }
+        }
+
+        private string piezaactual;
+
+        public string PiezaActual
+        {
+            get { return piezaactual; }
+            set { piezaactual = value; Actualizar("PiezaActual"); }
         }
 
 
@@ -187,6 +196,18 @@ namespace Ajedrez.ViewModels
                 PiezaConvertida = "Movimientos invalidos!";
 
             Actualizar();
+            GetPiezaActual();
+
+        }
+
+        public void GetPiezaActual()
+        {
+            for (int i = 0; i < Movimientos.Length; i++)
+            {
+                PiezaActual = Movimientos[i];
+                Actualizar();
+                Thread.Sleep(1000);
+            }
         }
 
         public void Actualizar(string name = null)
