@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -9,7 +10,7 @@ using System.Windows.Input;
 
 namespace Ajedrez.ViewModels
 {
-    class AjedrezViewModel
+    public class AjedrezViewModel : INotifyPropertyChanged
     {
         /* Console.WriteLine("Tu Peon esta en B1");
             Console.WriteLine("Escribe la serie de movimientos del peon separados por espcios");
@@ -23,7 +24,7 @@ namespace Ajedrez.ViewModels
         public bool MovimientosValidos
         {
             get { return movimientosvalidos; }
-            set { movimientosvalidos = value; }
+            set { movimientosvalidos = value; Actualizar("MovimientosValidos"); }
         }
 
         //Esta es la cadena completa que se enlazara a la view
@@ -32,7 +33,7 @@ namespace Ajedrez.ViewModels
         public string Palabra
         {
             get { return palabra; }
-            set { palabra = value; }
+            set { palabra = value; Actualizar("Palabra"); }
         }
 
         private string[] movimientos;
@@ -40,7 +41,7 @@ namespace Ajedrez.ViewModels
         public string[] Movimientos
         {
             get { return movimientos; }
-            set { movimientos = value; }
+            set { movimientos = value; Actualizar("Movimientos"); }
         }
 
 
@@ -50,7 +51,7 @@ namespace Ajedrez.ViewModels
         public string PiezaConvertida
         {
             get { return piezaconvertida; }
-            set { piezaconvertida = value; }
+            set { piezaconvertida = value; Actualizar("PiezaConvertida"); }
         }
 
 
@@ -62,7 +63,9 @@ namespace Ajedrez.ViewModels
         //Este metodo verifica el largo adecuado 
         public bool LargoAdecuado()
         {
-            Movimientos = Palabra.Split(' ').Where(x => x != "").ToArray();
+            //Aqui vamos a seperar la cadena por espacios, la hacemos mayusculas y lo convertimos en un arreglo
+            Movimientos = Palabra.Split(' ').Where(x => x != "").Select(x => x.ToUpper()).ToArray();
+
 
             foreach (var item in Movimientos)
             {
@@ -83,11 +86,11 @@ namespace Ajedrez.ViewModels
                 {
                     //Aqui con expresiones regulares validamos las palabras
                     if (!Regex.IsMatch(item, "^[A-F]{1}[1-6]{1}"))
-                        return  false;
+                        return false;
 
                 }
 
-                return  true;
+                return true;
             }
             else
                 return false;
@@ -106,9 +109,9 @@ namespace Ajedrez.ViewModels
                     if (i == 0)
                     {
                         if (actual == "B2" || actual == "B3")
-                           MovimientosValidos = true;
+                            MovimientosValidos = true;
                         else
-                            return MovimientosValidos= false;
+                            return MovimientosValidos = false;
                     }
 
 
@@ -131,7 +134,7 @@ namespace Ajedrez.ViewModels
                     if (actual == "B3")
                     {
                         if (Movimientos[i + 1] == "B4" || Movimientos[i + 1] == "A4")
-                             MovimientosValidos = true;
+                            MovimientosValidos = true;
                         else
                             return MovimientosValidos = false;
                     }
@@ -159,9 +162,11 @@ namespace Ajedrez.ViewModels
 
 
                 }
-            }
 
-            return MovimientosValidos = false;
+                return MovimientosValidos = true;
+            }
+            else
+                return MovimientosValidos = false;
         }
 
 
@@ -179,7 +184,16 @@ namespace Ajedrez.ViewModels
             }
             //si no fueron validos sus movimientos
             else
-                PiezaConvertida = "Movimientos invalidos!";       
+                PiezaConvertida = "Movimientos invalidos!";
+
+            Actualizar();
         }
+
+        public void Actualizar(string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
