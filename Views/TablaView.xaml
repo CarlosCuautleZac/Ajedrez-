@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ajedrez.Views"
         xmlns:vm="clr-namespace:Ajedrez.ViewModels"
+        xmlns:cuno="clr-namespace:Ajedrez.Helpers"
         mc:Ignorable="d"
         Title="TablaView" Height="750" Width="700" ResizeMode="NoResize">
     <Grid>
+        <Grid.Resources>
+            <cuno:DeTextoAPosicionConverter x:Key="convertidoruno"></cuno:DeTextoAPosicionConverter>
+        </Grid.Resources>
+        
         <Grid.DataContext>
             <vm:AjedrezViewModel></vm:AjedrezViewModel>
         </Grid.DataContext>
@@ -42,9 +47,7 @@
                     <TextBlock Margin="10,0"
                                FontSize="16"
                                VerticalAlignment="Center"
-                               FontWeight="Bold"
-                               
-                               Text="{Binding PiezaActual}"></TextBlock>
+                               FontWeight="Bold">Ingresa tus movimientos:</TextBlock>
                     <TextBox Width="260"
                              Text="{Binding Palabra}"></TextBox>
                     <Button Margin="10,0"
@@ -153,6 +156,20 @@
 
 
         </DockPanel>
-
+        <Canvas>
+            <Rectangle Width="75"
+                       Height="75"
+                       RenderTransformOrigin=".33, .5"
+                       x:Name="peon"
+                       Canvas.Top="543"
+                       Canvas.Left="58">
+                <Rectangle.RenderTransform>
+                    <RotateTransform></RotateTransform>
+                </Rectangle.RenderTransform>
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="../Assets/peon.png"></ImageBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Canvas>
     </Grid>
 </Window>
