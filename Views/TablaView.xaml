@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Ajedrez.Views"
         xmlns:vm="clr-namespace:Ajedrez.ViewModels"
         mc:Ignorable="d"
-        Title="TablaView" Height="850" Width="800" ResizeMode="NoResize">
+        Title="TablaView" Height="750" Width="700" ResizeMode="NoResize">
     <Grid>
         <Grid.DataContext>
             <vm:AjedrezViewModel></vm:AjedrezViewModel>
@@ -36,9 +36,7 @@
                     <TextBlock Margin="10,0">Ingresa los datos aquí:</TextBlock>
                     <TextBox Width="300"
                              Text="{Binding Palabra}"></TextBox>
-                    <Button Margin="10,0"
-                            Background="Black"
-                            Foreground="White">Ingresar datos</Button>
+                    <Button Margin="10,0">Ingresar datos</Button>
 
                 </StackPanel>
                 <TextBlock Text="{Binding PiezaConvertida}"></TextBlock>
