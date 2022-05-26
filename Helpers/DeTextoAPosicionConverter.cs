@@ -14,14 +14,15 @@ namespace Ajedrez.Helpers
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             string position = value.ToString();
+            if(position.Length>0)
+            position = position.Substring(0,1);
 
-            if (string.IsNullOrWhiteSpace(position))
-                return 5;
+            if (position == "B")
+                return 543d;
 
-            if (position == "B2")
-                return 15;
-            else                
-                return 20;
+            else
+                return 50d;
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

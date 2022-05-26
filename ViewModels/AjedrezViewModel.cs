@@ -55,7 +55,7 @@ namespace Ajedrez.ViewModels
             set { piezaconvertida = value; Actualizar("PiezaConvertida"); }
         }
 
-        private string piezaactual;
+        private string piezaactual = "";
 
         public string PiezaActual
         {
