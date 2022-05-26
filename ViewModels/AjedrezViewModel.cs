@@ -200,13 +200,13 @@ namespace Ajedrez.ViewModels
 
         }
 
-        public void GetPiezaActual()
+        public async void GetPiezaActual()
         {
             for (int i = 0; i < Movimientos.Length; i++)
             {
                 PiezaActual = Movimientos[i];
-                Actualizar();
-                Thread.Sleep(1000);
+                Actualizar("PiezaActual");
+                await Task.Delay(1000);
             }
         }
 
