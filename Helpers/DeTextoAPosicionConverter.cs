@@ -15,8 +15,9 @@ namespace Ajedrez.Helpers
         {
             string position = value.ToString();
 
-            if(position == "B2")
-                return Canvas.SetLeft()
+            if (position == "B2")
+                return 15;
+            else return 20;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
