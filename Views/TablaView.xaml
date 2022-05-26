@@ -161,7 +161,7 @@
                        Height="75"
                        RenderTransformOrigin=".33, .5"
                        x:Name="peon"
-                       Canvas.Top="543"
+                       Canvas.Top="{Binding PiezaActual, Converter={StaticResource convertidoruno}}"
                        Canvas.Left="58">
                 <Rectangle.RenderTransform>
                     <RotateTransform></RotateTransform>
