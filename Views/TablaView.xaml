@@ -13,34 +13,45 @@
         </Grid.DataContext>
         <DockPanel>
             <DockPanel.Resources>
-                <Style TargetType="{x:Type Button}">
+                <Style TargetType= "Button">
+                    <Setter Property="Foreground" Value="White"></Setter>
+                    <Setter Property="Background" Value="Black"></Setter>
                     <Setter Property="Template">
                         <Setter.Value>
-                            <ControlTemplate>
+                            <ControlTemplate TargetType="{x:Type Button}">
                                 <Border Background="{TemplateBinding Background}"
                                         Width="100"
                                         Height="25"
                                         CornerRadius="5">
                                     <ContentPresenter HorizontalAlignment="Center"
-                                                      VerticalAlignment="Center"
-                                                      ></ContentPresenter>
+                                                      VerticalAlignment="Center"></ContentPresenter>
                                 </Border>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
                 </Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="BorderThickness" Value="2"></Setter>
+                    <Setter Property="BorderBrush" Value="Black"></Setter>
+                </Style>
             </DockPanel.Resources>
             <StackPanel DockPanel.Dock="Bottom"
                     Height="70">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="10,0">Ingresa los datos aquí:</TextBlock>
+                    <TextBlock Margin="10,0"
+                               FontSize="16"
+                               VerticalAlignment="Center"
+                               FontWeight="Bold">Ingresa los datos aquí:</TextBlock>
                     <TextBox Width="300"
                              Text="{Binding Palabra}"></TextBox>
                     <Button Margin="10,0"
-                            Command="{Binding ValidarCommand}">Ingresar datos</Button>
+                            Command="{Binding ValidarCommand}">Intentar</Button>
 
                 </StackPanel>
-                <TextBlock Text="{Binding PiezaConvertida}"></TextBlock>
+                <TextBlock Text="{Binding PiezaConvertida}"
+                           FontWeight="Bold"
+                           Margin="10,0"
+                           FontSize="18"></TextBlock>
             </StackPanel>
             <StackPanel DockPanel.Dock="Left"
                         Width="30">
