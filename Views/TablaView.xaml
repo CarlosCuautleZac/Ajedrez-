@@ -42,7 +42,8 @@
                     <TextBlock Margin="10,0"
                                FontSize="16"
                                VerticalAlignment="Center"
-                               FontWeight="Bold">Ingresa los datos aquí:</TextBlock>
+                               FontWeight="Bold"
+                               Text="{Binding PiezaActual}"></TextBlock>
                     <TextBox Width="260"
                              Text="{Binding Palabra}"></TextBox>
                     <Button Margin="10,0"
