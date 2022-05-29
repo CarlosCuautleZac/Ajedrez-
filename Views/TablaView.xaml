@@ -163,9 +163,6 @@
                        x:Name="peon"
                        Canvas.Top="{Binding PiezaActual, Converter={StaticResource convertidoruno}}"
                        Canvas.Left="58">
-                <Rectangle.RenderTransform>
-                    <RotateTransform></RotateTransform>
-                </Rectangle.RenderTransform>
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="../Assets/peon.png"></ImageBrush>
                 </Rectangle.Fill>

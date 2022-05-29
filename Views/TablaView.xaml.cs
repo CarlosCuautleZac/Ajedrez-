@@ -23,5 +23,13 @@ namespace Ajedrez.Views
         {
             InitializeComponent();
         }
+
+
+
+
+
+
+
+
     }
 }
