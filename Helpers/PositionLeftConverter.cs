@@ -14,7 +14,25 @@ namespace Ajedrez.Helpers
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            string position = value.ToString();
+            if (position.Length > 0)
+                position = position.Substring(1, 1);
+
+            if (position == "1")
+                return 545d;
+            if (position == "2")
+                return 445d;
+            if (position == "3")
+                return 345d;
+            if (position == "4")
+                return 245d;
+            if (position == "5")
+                return 145d;
+            if (position == "6")
+                return 45d;
+
+            else
+                return -100d;
 
         }
 

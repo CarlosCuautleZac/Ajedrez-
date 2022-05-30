@@ -17,11 +17,21 @@ namespace Ajedrez.Helpers
             if(position.Length>0)
             position = position.Substring(0,1);
 
+            if (position == "A")
+                return 58d;
             if (position == "B")
-                return 543d;
+                return 168d;
+            if (position == "C")
+                return 272d;
+            if (position == "D")
+                return 380d;
+            if (position == "E")
+                return 485d;
+            if (position == "F")
+                return 590d;
 
             else
-                return 50d;
+                return -100d;
 
         }
 
