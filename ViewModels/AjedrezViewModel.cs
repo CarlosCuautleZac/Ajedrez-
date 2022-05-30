@@ -228,7 +228,7 @@ namespace Ajedrez.ViewModels
                     await Task.Delay(1000);
                 }
             else
-                PiezaConvertida = "No se puede ver algo vacio";
+                PiezaConvertida = "Por favor, ingresa los movimientos de la pieza.";
         }
 
         public void Actualizar(string name = null)
