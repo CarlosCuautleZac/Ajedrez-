@@ -18,6 +18,7 @@ namespace Ajedrez.ViewModels
          */
 
         public ICommand ValidarCommand { get; set; }
+        public ICommand VerMovimientosCommand { get; set; }
 
         //Es para saber si se cumple el regex
         private bool movimientosvalidos;
@@ -63,26 +64,37 @@ namespace Ajedrez.ViewModels
             set { piezaactual = value; Actualizar("PiezaActual"); }
         }
 
-
+        //Constructor
         public AjedrezViewModel()
         {
             ValidarCommand = new RelayCommand(GetPiezaConvertida);
+            VerMovimientosCommand = new RelayCommand(GetPiezaActual);
         }
 
         //Este metodo verifica el largo adecuado 
         public bool LargoAdecuado()
         {
-            //Aqui vamos a seperar la cadena por espacios, la hacemos mayusculas y lo convertimos en un arreglo
-            Movimientos = Palabra.Split(' ').Where(x => x != "").Select(x => x.ToUpper()).ToArray();
-
-
-            foreach (var item in Movimientos)
+            try
             {
-                if (item.Length != 2)
+                if (string.IsNullOrWhiteSpace(Palabra))
                     return false;
+                //Aqui vamos a seperar la cadena por espacios, la hacemos mayusculas y lo convertimos en un arreglo
+                Movimientos = Palabra.Split(' ').Where(x => x != "").Select(x => x.ToUpper()).ToArray();
+
+                foreach (var item in Movimientos)
+                {
+                    if (item.Length != 2)
+                        return false;
+                }
+
+                return true;
+            }
+            catch (NullReferenceException m)
+            {
+                PiezaConvertida = m.Message;
+                return false;
             }
 
-            return true;
         }
 
         //Este metodo verifica si es valida la palabra con el regex
@@ -126,7 +138,7 @@ namespace Ajedrez.ViewModels
 
                     if (Movimientos[0] == "B1")
                     {
-                        return false;
+                        return MovimientosValidos = false;
                     }
 
 
@@ -172,6 +184,9 @@ namespace Ajedrez.ViewModels
 
                 }
 
+                if (Movimientos[0] == "B1")
+                    return MovimientosValidos = false;
+
                 return MovimientosValidos = true;
             }
             else
@@ -190,24 +205,30 @@ namespace Ajedrez.ViewModels
                 //si termina en otro lugar
                 else
                     PiezaConvertida = "Movimientos validos";
+
+                GetPiezaActual();
             }
             //si no fueron validos sus movimientos
             else
                 PiezaConvertida = "Movimientos invalidos!";
 
             Actualizar();
-            GetPiezaActual();
+
 
         }
 
         public async void GetPiezaActual()
         {
-            for (int i = 0; i < Movimientos.Length; i++)
-            {
-                PiezaActual = Movimientos[i];
-                Actualizar("PiezaActual");
-                await Task.Delay(1000);
-            }
+
+            if (Movimientos !=null)
+                for (int i = 0; i < Movimientos.Length; i++)
+                {
+                    PiezaActual = Movimientos[i];
+                    Actualizar("PiezaActual");
+                    await Task.Delay(1000);
+                }
+            else
+                PiezaConvertida = "No se puede ver algo vacio";
         }
 
         public void Actualizar(string name = null)
