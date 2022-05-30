@@ -108,11 +108,18 @@ namespace Ajedrez.ViewModels
                     //Aqui con expresiones regulares validamos las palabras
                     if (!Regex.IsMatch(item, "^[A-F]{1}[1-6]{1}"))
                         return false;
-
                 }
 
                 return true;
             }
+            else
+                return false;
+        }
+
+        public bool PrimeraPoisicionAceptada()
+        {
+            if (Movimientos[0] == "B2" || Movimientos[0] == "B3")
+                return true;
             else
                 return false;
         }
@@ -122,72 +129,78 @@ namespace Ajedrez.ViewModels
         {
             if (EsPalabraValida())
             {
-                for (int i = 0; i < Movimientos.Length - 1; i++)
+                if (PrimeraPoisicionAceptada())
                 {
-                    var actual = Movimientos[i];
-
-
-                    if (i == 0)
+                    for (int i = 0; i < Movimientos.Length - 1; i++)
                     {
-                        if (actual == "B2" || actual == "B3")
-                            MovimientosValidos = true;
-                        else
+                        var actual = Movimientos[i];
+
+
+                        if (i == 0)
+                        {
+                            if (actual == "B2" || actual == "B3")
+                                MovimientosValidos = true;
+                            else
+                                return MovimientosValidos = false;
+                        }
+
+
+                        if (Movimientos[0] == "B1")
+                        {
                             return MovimientosValidos = false;
-                    }
-
-
-                    if (Movimientos[0] == "B1")
-                    {
-                        return MovimientosValidos = false;
-                    }
+                        }
 
 
 
-                    if (actual == "B2")
-                    {
-                        if (Movimientos[i + 1] == "B3")
-                            MovimientosValidos = true;
-                        else
+                        if (actual == "B2")
+                        {
+                            if (Movimientos[i + 1] == "B3")
+                                MovimientosValidos = true;
+                            else
+                                return MovimientosValidos = false;
+                        }
+
+
+                        if (actual == "B3")
+                        {
+                            if (Movimientos[i + 1] == "B4" || Movimientos[i + 1] == "A4")
+                                MovimientosValidos = true;
+                            else
+                                return MovimientosValidos = false;
+                        }
+
+                        if (actual == "B4" || actual == "A4")
+                        {
+                            if (Movimientos[i + 1] == "B5" || Movimientos[i + 1] == "A5")
+                                MovimientosValidos = true;
+                            else
+                                return MovimientosValidos = false;
+                        }
+
+                        if (actual == "B5" || actual == "A5")
+                        {
+                            if (Movimientos[i + 1] == "B6" || Movimientos[i + 1] == "A6")
+                                MovimientosValidos = true;
+                            else
+                                return MovimientosValidos = false;
+                        }
+
+                        if (actual == "B6" || actual == "A6")
+                        {
                             return MovimientosValidos = false;
+                        }
+
+                        if (i > 1)
+                            if (Movimientos[i - 1] == "B6")
+                                return MovimientosValidos = false;
                     }
 
-
-                    if (actual == "B3")
-                    {
-                        if (Movimientos[i + 1] == "B4" || Movimientos[i + 1] == "A4")
-                            MovimientosValidos = true;
-                        else
-                            return MovimientosValidos = false;
-                    }
-
-                    if (actual == "B4" || actual == "A4")
-                    {
-                        if (Movimientos[i + 1] == "B5" || Movimientos[i + 1] == "A5")
-                            MovimientosValidos = true;
-                        else
-                            return MovimientosValidos = false;
-                    }
-
-                    if (actual == "B5" || actual == "A5")
-                    {
-                        if (Movimientos[i + 1] == "B6" || Movimientos[i + 1] == "A6")
-                            MovimientosValidos = true;
-                        else
-                            return MovimientosValidos = false;
-                    }
-
-                    if (actual == "B6" || actual == "A6")
-                    {
-                        return MovimientosValidos = false;
-                    }
-
-
+                    return MovimientosValidos = true;
                 }
 
-                if (Movimientos[0] == "B1")
-                    return MovimientosValidos = false;
-
-                return MovimientosValidos = true;
+                else 
+                    return false;
+                
             }
             else
                 return MovimientosValidos = false;
@@ -206,7 +219,7 @@ namespace Ajedrez.ViewModels
                 else
                     PiezaConvertida = "Movimientos validos";
 
-                
+
             }
             //si no fueron validos sus movimientos
             else
@@ -220,7 +233,7 @@ namespace Ajedrez.ViewModels
         public async void GetPiezaActual()
         {
 
-            if (Movimientos !=null)
+            if (Movimientos != null)
                 for (int i = 0; i < Movimientos.Length; i++)
                 {
                     PiezaActual = Movimientos[i];
