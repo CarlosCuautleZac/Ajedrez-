@@ -206,14 +206,14 @@ namespace Ajedrez.ViewModels
                 else
                     PiezaConvertida = "Movimientos validos";
 
-                GetPiezaActual();
+                
             }
             //si no fueron validos sus movimientos
             else
                 PiezaConvertida = "Movimientos invalidos!";
 
+            GetPiezaActual();
             Actualizar();
-
 
         }
 
