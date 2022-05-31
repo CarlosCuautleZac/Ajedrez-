@@ -20,7 +20,7 @@ namespace Ajedrez.ViewModels
         public ICommand ValidarCommand { get; set; }
         public ICommand VerMovimientosCommand { get; set; }
 
-        public bool IsCollapsed { get; set; } = true;
+        public bool IsCollapsed { get; set; } = false;
 
         //Es para saber si se cumple el regex
         private bool movimientosvalidos;
@@ -237,14 +237,18 @@ namespace Ajedrez.ViewModels
         {
 
             if (Movimientos != null)
+            {
                 for (int i = 0; i < Movimientos.Length; i++)
                 {
                     PiezaActual = Movimientos[i];
                     Actualizar("PiezaActual");
                     await Task.Delay(1000);
-                    if (PiezaConvertida == "Tu peon se ha convertido en una reina!" && Movimientos[i] == "B6")
-                        IsCollapsed = false;
+
                 }
+                if (PiezaConvertida == "Tu peon se ha convertido en una reina!" && PiezaActual == "B6")
+                    IsCollapsed = true;
+            }
+
             else
                 PiezaConvertida = "Por favor, ingresa los movimientos de la pieza.";
         }

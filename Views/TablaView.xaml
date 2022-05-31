@@ -12,6 +12,7 @@
         <Grid.Resources>
             <cuno:DeTextoAPosicionConverter x:Key="convertidoruno"></cuno:DeTextoAPosicionConverter>
             <cuno:PositionLeftConverter x:Key="convertidordos"></cuno:PositionLeftConverter>
+            <cuno:DePeonAReinaConverter x:Key="ReinaPeon"></cuno:DePeonAReinaConverter>
         </Grid.Resources>
         
         <Grid.DataContext>
@@ -165,7 +166,7 @@
                        Canvas.Top="{Binding PiezaActual, Converter={StaticResource convertidordos}}"
                        Canvas.Left="{Binding PiezaActual, Converter={StaticResource convertidoruno}}">
                 <Rectangle.Fill>
-                    <ImageBrush ImageSource="../Assets/peon.png"></ImageBrush>
+                    <ImageBrush ImageSource="{Binding PiezaActual, Converter={StaticResource ReinaPeon}}"></ImageBrush>
                 </Rectangle.Fill>
             </Rectangle>
         </Canvas>

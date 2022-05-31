@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="Assets\peon.png" />
+    <None Remove="Assets\reina.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +21,9 @@
 
   <ItemGroup>
     <Resource Include="Assets\peon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\reina.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

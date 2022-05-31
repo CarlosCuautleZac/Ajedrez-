@@ -4,34 +4,26 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Data;
+using Ajedrez.ViewModels;
 
 namespace Ajedrez.Helpers
 {
-    internal class DeTextoAPosicionConverter : IValueConverter
+    internal class DePeonAReinaConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            string reina = "../Assets/reina.png";
+            string peon = "../Assets/peon.png";
             string position = value.ToString();
-            if(position.Length>0)
-            position = position.Substring(0,1);
+            if (position.Length > 0)
+                position = position.Substring(0, 2);
 
-            if (position == "A")
-                return 58d;
-            if (position == "B")
-                return 168d;
-            if (position == "C")
-                return 272d;
-            if (position == "D")
-                return 380d;
-            if (position == "E")
-                return 485d;
-            if (position == "F")
-                return 590d;
-
+            if (position == "B6" || position == "A6")
+                return reina;
             else
-                return 168d;
+                return peon;
+
 
         }
 

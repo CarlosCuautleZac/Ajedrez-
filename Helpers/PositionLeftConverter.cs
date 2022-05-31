@@ -32,7 +32,7 @@ namespace Ajedrez.Helpers
                 return 45d;
 
             else
-                return -100d;
+                return 545d;
 
         }
 
