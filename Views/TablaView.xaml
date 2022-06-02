@@ -13,6 +13,7 @@
             <cuno:DeTextoAPosicionConverter x:Key="convertidoruno"></cuno:DeTextoAPosicionConverter>
             <cuno:PositionLeftConverter x:Key="convertidordos"></cuno:PositionLeftConverter>
             <cuno:DePeonAReinaConverter x:Key="ReinaPeon"></cuno:DePeonAReinaConverter>
+            <cuno:PiezaComidaConverter x:Key="ColapsadoConvertidor"></cuno:PiezaComidaConverter>
         </Grid.Resources>
         
         <Grid.DataContext>
@@ -123,7 +124,18 @@
 
                     <Border Grid.Row="5"></Border>
                     <Border Grid.Row="3"></Border>
-                    <Border Grid.Row="1"></Border>
+                    <Border Grid.Row="1">
+                        <Canvas>
+                            <Image Source="../Assets/Peon.png" 
+                                   RenderTransformOrigin=".34,.5"
+                                   Height="75"
+                                   Width="75"
+                                   Canvas.Top="12"
+                                   Canvas.Left="25"
+                                   Visibility="{Binding PiezaActual, Converter={StaticResource ColapsadoConvertidor}}"></Image>
+
+                        </Canvas>
+                    </Border>
                     <Border Grid.Row="5"
                             Grid.Column="2"></Border>
                     <Border Grid.Row="5"
