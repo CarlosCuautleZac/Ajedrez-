@@ -201,7 +201,7 @@ namespace Ajedrez.ViewModels
                 }
 
                 else 
-                    return false;
+                    return MovimientosValidos = false; ;
                 
             }
             else
@@ -246,7 +246,7 @@ namespace Ajedrez.ViewModels
 
                 }
                 if (PiezaConvertida == "Tu peon se ha convertido en una reina!" && PiezaActual == "B6")
-                    IsCollapsed = true;
+                    IsCollapsed = false;
             }
 
             else

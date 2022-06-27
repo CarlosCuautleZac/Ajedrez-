@@ -4,11 +4,16 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>peon-_1_.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Assets\peon.png" />
     <None Remove="Assets\reina.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="peon-_1_.ico" />
   </ItemGroup>
 
   <ItemGroup>
